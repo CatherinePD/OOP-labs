@@ -3,78 +3,61 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClassDesign;
 
-namespace Lab3
+namespace Program
 {
-    class Abiturient
-    {
-        private readonly int id;
-        private string firstName;
-        private string secondName;
-        private string address;
-        private int phoneNumber;
-        private int[] marks = new int[5];
-        static string university;
-        static int num = 0;
-
-        public Abiturient()
-        {
-            num++;
-            Console.WriteLine("Новый абитуриент номер "+num); //добавлен абитуриент №...
-        }
-
-        public Abiturient(string firstName, string secondName, string Address, int number = 0000000)
-        {
-            this.firstName = firstName;
-            this.secondName = secondName;
-            address = Address;
-            phoneNumber = number;
-            num++;
-        }
-        static Abiturient()
-        {
-            university = "БГТУ";
-            Console.WriteLine($"Прием абитуриентов ведется в {university}");
-        }
-      //private Abiturient()
-      //  {
-            
-      //  }
-        public void AddInfo(string FirstName, string SecondName, string Address, int Number)
-        {
-            firstName = FirstName;
-            secondName = SecondName;
-            address = Address;
-            phoneNumber = Number;
-        }
-        public void GetInfo()
-        {
-            Console.WriteLine($"Сведения об абитуриенте: \n ФИ: {firstName} {secondName} \n Адрес: {address} \n Телефонный номер: {phoneNumber}");
-        }
-        public void AddMarks(int[] Marks)
-        {
-            marks = Marks;
-        }
-        public int srBall(int[] marks)
-        {
-            int sr;
-            int sum = 0;
-            for (int i = 0; i<marks.Length; i++)
-                sum += marks[i];
-            sr = sum / marks.Length;
-            return sr;
-        }
-    }
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Abiturient first = new Abiturient();
-            first.GetInfo();
-            first.AddInfo("Kate", "Petrovich", "Gromova 34-126", 3239480);
-            first.GetInfo();
-            
-            
+            var a = new Abiturient("Екатерина", "Петрович", "Дмитриевна", "Громова", "1234567", new[] { 9, 8, 10, 9, 8 });
+            var b = new Abiturient("Валерий", "Коклюшкин", "Аристархович");
+            var c = new Abiturient("Виктор", "Петучевский", "Геннадьевич", "ул. Пушкина, дом Колотушкина");
+
+            var x1 = new Abiturient("Мария", "Петрова", "Витальевна");
+            var x2 = new Abiturient("Мария", "Петрова", "Витальевна");
+
+            b.Marks = new[] { 7, 6, 4, 9, 6 };
+            c.Phone = "88005553535";
+
+            a.PrintFullname(out var fullname_a);
+            b.PrintFullname(out var fullname_b);
+            Console.WriteLine($"Максимальная оценка {fullname_a}: {a.GetMaxMark()}");
+            Console.WriteLine($"Средний балл {fullname_b}: {b.GetAverageMark()}");
+
+            Console.WriteLine($"x1 и x2 равны: {x1.Equals(x2)}");
+
+            x1.Phone = "9999";
+
+            Console.WriteLine($"а теперь x1 и x2 равны: {x1.Equals(x2)}");
+
+            Console.WriteLine($"Тип x1 {x1.GetType()}");
+
+            x1.Marks = new[] { 5, 4, 9, 5, 6 };
+
+
+            Abiturient[] abs = { a, b, c, x1, x2 };
+
+            Console.WriteLine("Неудовлетворительные оценки у:");
+            foreach (var abiturient in abs)
+            {
+                if (abiturient.Marks.Any(m => m < 4))
+                    Console.WriteLine($"{abiturient.Name} {abiturient.Surname}");
+            }
+
+            Console.WriteLine("Абитуриенты с суммой баллов выше 40:");
+            foreach (var abiturient in abs)
+            {
+                if (abiturient.Marks.Sum() > 40)
+                    Console.WriteLine($"{abiturient.Name} {abiturient.Surname}");
+            }
+
+            Console.WriteLine(Abiturient.GetMetaInfo());
+
+            var aType = new { Name = "Анастасия", Surname = "Шевцова", Middlename = "Дмитриевна", Address = "Волгоградская 65-8", Phone = "01010101", Marks = new int[] { 9, 8, 10, 7, 9 } };
+
+            Console.WriteLine($"Экземпляр анонимного типа: {aType.Name} {aType.Surname}; адрес: {aType.Address}, телефон: {aType.Phone}");
         }
     }
 }

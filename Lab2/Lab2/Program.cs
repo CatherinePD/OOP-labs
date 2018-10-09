@@ -110,6 +110,7 @@ namespace Lab2
                     Console.Write(arr[x, y] + " ");
                 Console.WriteLine();
             }
+            Console.WriteLine(arr.GetLength(1));
             //3.b
             string[] ns = { "C++", "C#", "Python", "Java", "Swift", "JavaScript" };
             foreach (string ind in ns)

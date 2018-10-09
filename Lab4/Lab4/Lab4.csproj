@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E6AA7603-E9C8-44AC-9968-BA5AA398B67F}</ProjectGuid>
+    <ProjectGuid>{7C90C680-5968-40E0-8BA2-88F7312BAC14}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Lab3</RootNamespace>
-    <AssemblyName>Lab3</AssemblyName>
+    <RootNamespace>Lab4</RootNamespace>
+    <AssemblyName>Lab4</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,8 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abiturient.cs" />
-    <Compile Include="AbiturientProps.cs" />
+    <Compile Include="Matrix.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
