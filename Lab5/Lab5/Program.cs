@@ -46,13 +46,18 @@ namespace Lab5
             stone1.DamageTest(2000);
 
             // тест интефейсов
+            //1 способ
             Console.WriteLine("\nТест интерфесов:");
-            var rubyWorkshop = ruby1 as IJeweleryWorkshop;
-            var rubyReseller = ruby1 as IJeweleryReseller;    
+            var rubyWorkshop = ruby1 as IJeweleryWorkshop;     //не вызывает исключений
+            var rubyReseller = ruby1 as IJeweleryReseller;
 
             // 2 метода с одинаковым названием (но от разных интефейсов)
             rubyWorkshop.ProcessStone();// вызываем ProcessStone() от IJeweleryWorkshop
             rubyReseller.ProcessStone();// вызываем ProcessStone() от IJeweleryReseller
+
+            //2 способ
+            ((IJeweleryWorkshop)ruby1).ProcessStone();        //может вызвать исключения
+            ((IJeweleryReseller)ruby1).ProcessStone();
 
             nefrit1.MakeEarrings();  // другие объекты, реализующие IJeweleryWorkshop
             diamond1.MakeRing();

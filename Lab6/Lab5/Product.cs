@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab5
+namespace Lab6
 {
     public abstract class Product //нельзя создать объект абстрактного класса
     {
@@ -66,4 +66,5 @@ namespace Lab5
         Ready, // На складе
         Damaged // Поврежден
     }
+
 }
