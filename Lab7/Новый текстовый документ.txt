@@ -1,0 +1,5 @@
+negativeArgument
+stringNullOrEmpty
+nullArgument --
+argumentRange
+indexOutOfRange --
